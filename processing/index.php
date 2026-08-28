@@ -7,8 +7,8 @@ $database = new SqliteDatabase();
 $result_kidung = $database->fetchAll(0);
 
 $result_suplemen =$database->fetchAll(1);
-
-$database_to_convert = new Database();
+// mysql
+$database_to_convert = new Database("mysql:host=localhost;dbname=kidung");
 
 $database_to_convert->insertKidung($result_kidung);
 
