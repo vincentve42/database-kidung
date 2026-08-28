@@ -3,9 +3,9 @@ require_once __DIR__ . "/../object/kidung.php";
 
 class Database{
     public $database;
-    public function __construct($dsn)
+    public function __construct($dsn, $user, $password)
     {
-        $this->database = new PDO($dsn, "root", "");
+        $this->database = new PDO($dsn, $user, $password);
     }
     public function query($str)
     {
