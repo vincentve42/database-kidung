@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . "/../object/kidung.php";
-
+require_once __DIR__ . "/../object/suplemen.php";
 class SqliteDatabase{
     public $database;
     public function __construct()
@@ -36,14 +36,13 @@ class SqliteDatabase{
             $result = $this->query("SELECT * FROM Kidung WHERE tipe='s'");  
             while($row = $result->fetchArray())
             {
-                $kidung = new Suplemen();
+                $suplemen = new Suplemen();
                 $content = $row[1];
-                $content = explode("\n", $content, 1);
-                $kidung->judul = $content[0];
-                $kidung->isi = $content[1];
-                $kidung->no_kidung = (int)$row[6];
-
-                $obj[] = $kidung;
+                $content = explode("\n", $content, 2);
+                $suplemen->judul = $content[0];
+                $suplemen->isi = $content[1];
+                $suplemen->no_kidung = (int)$row[6];
+                $obj[] = $suplemen;
             }
             return $obj;
         }

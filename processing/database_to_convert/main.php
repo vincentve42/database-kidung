@@ -25,6 +25,19 @@ class Database{
             
         }
     }
+    public function insertSuplemen($suplemenArr){
+        $this->query("TRUNCATE TABLE suplemen");
+        foreach($suplemenArr as $eachKidung)
+        {
+            
+            $query = $this->database->prepare("INSERT INTO suplemen(no_kidung, judul, isi) VALUES(?, ?, ?)");
+            $query->bindParam(1, $eachKidung->no_kidung, PDO::PARAM_INT);
+            $query->bindParam(2,$eachKidung->judul, PDO::PARAM_STR);
+            $query->bindParam(3,$eachKidung->isi, PDO::PARAM_STR);
+            $query->execute();
+            
+        }
+    }
 }
 
 ?>
